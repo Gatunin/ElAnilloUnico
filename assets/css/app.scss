@@ -1,0 +1,133 @@
+@import "./modules/variables";
+@import "./modules/mixins";
+
+body {
+    margin: 0px;
+    background-color: $colorFondo;
+}
+
+img {
+    max-width: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+.container {
+    grid-column: span 12;
+}
+
+.grid-main-area {
+    display: grid;
+    grid-column-start: 2;
+    grid-column-end: 12;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    .logo {
+        grid-column: span 9;
+        img:hover {
+            @include animacionOpacidad;
+        }
+    }
+
+    .menuBatalla {
+        grid-row-start: 2;
+        grid-column: span 9;
+        margin: 5px;
+        img {
+            @include imagenMenu;
+            &:hover {
+                @include animacionOpacidad;
+            }
+        }
+    }
+    .menuViaje {
+        grid-row-start: 3;
+        grid-column: span 9;
+        margin: 5px;
+        img {
+            @include imagenMenu;
+            &:hover {
+                @include animacionOpacidad;
+            }
+        }
+    }
+    .menuFase {
+        grid-row-start: 4;
+        grid-column: span 9;
+        margin: 5px;
+        img {
+            @include imagenMenu;
+            &:hover {
+                @include animacionOpacidad;
+            }
+        }
+    }
+}
+
+@media (min-width: 960px) {
+    .container {
+        grid-column: 2/12;
+    }
+
+    .grid-main-area {
+        display: grid;
+        grid-column-start: 2;
+        grid-column-end: 12;
+        grid-template-columns: repeat(9,1fr);
+        grid-template-rows: auto;
+        grid-template-areas:
+            ". . logo logo logo logo logo . ."
+            "menuBatalla menuBatalla menuBatalla menuViaje menuViaje menuViaje menuFase menuFase menuFase";
+
+        .logo {
+            grid-area: logo;
+            img:hover {
+                @include animacionOpacidad;
+            }
+        }
+
+        .menuBatalla {
+            grid-area: menuBatalla;
+            margin: 5px;
+            img {
+                @include imagenMenu;
+                &:hover {
+                    @include animacionOpacidad;
+                }
+            }
+        }
+        .menuViaje {
+            grid-area: menuViaje;
+            margin: 5px;
+            img {
+                @include imagenMenu;
+                &:hover {
+                    @include animacionOpacidad;
+                }
+            }
+        }
+        .menuFase {
+            grid-area: menuFase;
+            margin: 5px;
+            img {
+                @include imagenMenu;
+                &:hover {
+                    @include animacionOpacidad;
+                }
+            }
+        }
+    }
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
